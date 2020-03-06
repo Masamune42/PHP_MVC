@@ -7,5 +7,53 @@ C'est quoi le MVC?
 - Models : Classe dédiées au différentes pages
 - Views : HTML
 - Controllers : Partie qui fait va faire le traitement en php (ex : formulaire).
-- Points d'accès : Vérifie si le visiteur a le droit d'accéder aux pages
+- Points d'accès : Vérifie si le visiteur a le droit d'accéder aux pages, s'il a la bonne addresse IP
 
+Structure générale :
+- models
+- views
+- controllers
+- assets
+    - images
+    - js
+    - styles
+- _config (permet de se connecter à la BDD et avoir nos constantes)
+- _functions (contient les fichiers avec nos fonctions)
+- _classes (contient les classes PHP / POO)
+- _scripts (traitement PHP qui ne sont pas des pages)
+
+- index.php (redirige vers la page voulue)
+
+Utilisation :
+index.php : Détection de la page reçue sur $_GET et redirection suivant le nom.
+
+Création home dans chaque sous dossier :
+controllers/home_controller.php
+models/home_model.php
+views/home_view.php
+
+Si on accède à l'adresse : http://localhost/PHP_MVC/
+On sera automatiquement redirigé vers la page index.php
+On va détecter que la valeur de la méthode GET est vide donc, en passant par la condition, on sera redirigé vers home.
+http://localhost/PHP_MVC/ = http://localhost/PHP_MVC/?page=home
+
+
+Créer : 
+views\includes\header.php
+views\includes\head.php
+views\includes\footer.php
+
+Création d'un barre de navigation :
+header.php
+Dans la barre de navigation on indique toujours des chemins ramenant à index.php
+pour home : index.php?page=home
+pour contact : index.php?page=home
+
+Pour stocket des images spécifiques :
+Créer des dossiers en plus : icones, users (images de profil), brand
+
+Pour stocker les fichiers js spécifiques à des pages :
+Créer des dossiers en plus : home, contact...
+
+CSS :
+Créer un dossier css dans assets

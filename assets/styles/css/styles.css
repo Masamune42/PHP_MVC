@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+}
+
+h1{
+    color: #FF0000;
+}
+
+img {
+    width: 100%;
+    padding: 0 50px;
+    margin: 30px 0;
+}
