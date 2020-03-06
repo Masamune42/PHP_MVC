@@ -1,0 +1,11 @@
+MVC :
+Avantages :
+
+Inconvéniants :
+
+C'est quoi le MVC?
+- Models : Classe dédiées au différentes pages
+- Views : HTML
+- Controllers : Partie qui fait va faire le traitement en php (ex : formulaire).
+- Points d'accès : Vérifie si le visiteur a le droit d'accéder aux pages
+
