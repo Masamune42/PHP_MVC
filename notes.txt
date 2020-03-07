@@ -57,3 +57,32 @@ Créer des dossiers en plus : home, contact...
 
 CSS :
 Créer un dossier css dans assets
+
+_config :
+- config.php :
+    - Paths :
+        Contient toutes les constantes globales
+        PATH_REQUIRE -> Adresse complète du projet à partir du C: et en retirant index.php à la fin
+                    -> A utiliser dans les include et require pour être sûr d'appeler les bons fichiers
+        PATH -> Lien courant du site
+            -> A utiliser pour les src et href
+
+    - Website informations :
+        Informations du site : title, name, author, etc...
+
+    - Facebook Open Graph tags :
+        Afficher des infos sur d'autres sites quand partagé
+    
+    - DataBase informations
+    
+
+- db.php :
+    connexion à la BDD
+    création d'un variable $db qui reçoit l'objet PDO pour établir la connexion à la BDD
+    utilisation des variables globales (à configurer) pour se connecter à la BDD
+
+_functions : fonctions utilisables dans toutes les pages
+
+_classes : Stock les classes à utiliser pour qu'elles soient appelées dans les model.php
+
+

@@ -1,5 +1,10 @@
 <?php
 
+// Inclusion des fichiers principaux
+include_once '_config/config.php';
+include_once '_config/db.php';
+include_once '_functions/functions.php';
+
 // Définition de la page courante
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = trim(strtolower($_GET['page']));
@@ -10,7 +15,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 // Array contenant toutes les pages
 $allPages = scandir('controllers/');
 
-// Si dans la liste des pages il y a celle que l'on veut
+// Vérification de l'existence de la page
 if (in_array($page . '_controller.php', $allPages)) {
     // Inclusion de la page
     include_once 'models/' . $page . '_model.php';
