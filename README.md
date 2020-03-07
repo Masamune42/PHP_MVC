@@ -41,33 +41,33 @@ controllers/home_controller.php
 models/home_model.php
 views/home_view.php
 
+### Explications sur la redirection de index.php
 Si on accède à l'adresse : http://localhost/PHP_MVC/
 On sera automatiquement redirigé vers la page index.php
 On va détecter que la valeur de la méthode GET est vide donc, en passant par la condition, on sera redirigé vers home.
 http://localhost/PHP_MVC/ = http://localhost/PHP_MVC/?page=home
 
 
-### Créer : 
+### Création des header, footer et head
 - views\includes\header.php
 - views\includes\head.php
 - views\includes\footer.php
 
-### Création d'un barre de navigation :
-header.php
-Dans la barre de navigation on indique toujours des chemins ramenant à index.php
+### Création d'un barre de navigation
+Dans la barre de navigation header.php on indique toujours des chemins ramenant à index.php
 pour home : index.php?page=home
 pour contact : index.php?page=home
 
-Pour stocker des images spécifiques :
+### Pour stocker des images spécifiques
 Créer des dossiers en plus : icones, users (images de profil), brand
 
-Pour stocker les fichiers js spécifiques à des pages :
+### Pour stocker les fichiers js spécifiques à des pages
 Créer des dossiers en plus : home, contact...
 
-### CSS :
+### CSS
 Créer un dossier css dans assets
 
-### _config :
+### _config
 - config.php :
     - Paths :
         Contient toutes les constantes globales
