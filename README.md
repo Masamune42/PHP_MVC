@@ -34,9 +34,10 @@ Inconvéniants :
 
 Utilisation
 ============
-index.php : Détection de la page reçue sur $_GET et redirection suivant le nom.
+### index.php
+Détection de la page reçue sur $_GET et redirection suivant le nom.
 
-### Création home dans chaque sous dossier :
+### Création home dans chaque sous dossier
 controllers/home_controller.php
 models/home_model.php
 views/home_view.php
@@ -53,7 +54,7 @@ http://localhost/PHP_MVC/ = http://localhost/PHP_MVC/?page=home
 - views\includes\head.php
 - views\includes\footer.php
 
-### Création d'un barre de navigation
+### Création d'une barre de navigation
 Dans la barre de navigation header.php on indique toujours des chemins ramenant à index.php
 pour home : index.php?page=home
 pour contact : index.php?page=home
