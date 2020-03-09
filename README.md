@@ -2,14 +2,25 @@
 
 Cours udemy sur le model MVC avec PHP
 
+## IDE utilisé
+- Visual Studio Code -> Extensions : 
+    - PHP Intelliphense
+    - PHP DocBlocker
+    - IntelliJ IDEA Keybindings
+    - PHP Getters & Setters
+    - Apache Conf
+    - Apache Conf Snippets
+
 Présentation
 ===========
-Avantages :
-- 1
-- 2
+### Avantages
+- Scinder le code (de manière logique)
+- Ne pas copier/coller du code
+- Centraliser l'entrée des visiteurs (=plus de contrôle)
+- Sécuriser son site
 
-Inconvéniants :
-- 3
+### Inconvénient
+- Inutile pour un petit projet
 
 ### C'est quoi le MVC?
 - Models : Classe dédiées au différentes pages
@@ -32,7 +43,7 @@ Inconvéniants :
 
 - index.php (redirige vers la page voulue)
 
-Utilisation
+Comprendre la structure
 ============
 ### index.php
 Détection de la page reçue sur $_GET et redirection suivant le nom.
@@ -56,8 +67,10 @@ http://localhost/PHP_MVC/ = http://localhost/PHP_MVC/?page=home
 
 ### Création d'une barre de navigation
 Dans la barre de navigation header.php on indique toujours des chemins ramenant à index.php
-pour home : index.php?page=home
-pour contact : index.php?page=home
+- Pour home : index.php?page=home
+- Pour contact : index.php?page=home
+
+A changer plus tard lors de la configuration du .htaccess [.htaccess](#.htaccess)
 
 ### Pour stocker des images spécifiques
 Créer des dossiers en plus : icones, users (images de profil), brand
@@ -71,11 +84,9 @@ Créer un dossier css dans assets
 ### _config
 - config.php :
     - Paths :
-        Contient toutes les constantes globales
-        PATH_REQUIRE -> Adresse complète du projet à partir du C: et en retirant index.php à la fin
-                    -> A utiliser dans les include et require pour être sûr d'appeler les bons fichiers
-        PATH -> Lien courant du site
-            -> A utiliser pour les src et href
+        - Contient toutes les constantes globales
+        - PATH_REQUIRE -> Adresse complète du projet à partir du C: et en retirant index.php à la fin, à utiliser dans les include et require pour être sûr d'appeler les bons fichiers
+        - PATH -> Lien courant du site, à utiliser pour les src et href
 
     - Website informations :
         Informations du site : title, name, author, etc...
@@ -87,12 +98,23 @@ Créer un dossier css dans assets
     
 
 - db.php :
-    connexion à la BDD
-    création d'un variable $db qui reçoit l'objet PDO pour établir la connexion à la BDD
-    utilisation des variables globales (à configurer) pour se connecter à la BDD
+    - Connexion à la BDD
+    - Création d'un variable $db qui reçoit l'objet PDO pour établir la connexion à la BDD
+    - Utilisation des variables globales (à configurer) pour se connecter à la BDD
 
-### _functions : fonctions utilisables dans toutes les pages
+### _functions
+fonctions utilisables dans toutes les pages
 
-### _classes : Stock les classes à utiliser pour qu'elles soient appelées dans les model.php
+### _classes
+Stock les classes à utiliser pour qu'elles soient appelées dans les model.php
+
+### .htaccess
+Permet de configurer directement Apache (serveur HTTP)
+.htaccess : On va pouvoir ajouter des configurations à Apache sur notre site courant.
+
+- URL rewriting :
+    - Permet de réécrire un lien, ex : http://localhost/PHP_MVC/contact -> http://localhost/PHP_MVC/index.php?page=contact
 
 
+Utiliser la structure : Créer un blog
+============
