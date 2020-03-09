@@ -1,0 +1,6 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_\-]*)?/?$ index.php?page=$1&%{QUERY_STRING}
+# ^$ -> ce qui est interprété après le nom du site
+# google.com/qsdf?page=2=fghj&action=rewrite -> google.com/?page=qsdf?page=2=fghj&action=rewrite

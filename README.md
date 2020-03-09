@@ -54,10 +54,10 @@ models/home_model.php
 views/home_view.php
 
 ### Explications sur la redirection de index.php
-Si on accède à l'adresse : http://localhost/PHP_MVC/
+Si on accède à l'adresse : http://localhost/PHP_MVC/Structure/
 On sera automatiquement redirigé vers la page index.php
 On va détecter que la valeur de la méthode GET est vide donc, en passant par la condition, on sera redirigé vers home.
-http://localhost/PHP_MVC/ = http://localhost/PHP_MVC/?page=home
+http://localhost/PHP_MVC/Structure/ = http://localhost/PHP_MVC/Structure/?page=home
 
 
 ### Création des header, footer et head
@@ -113,8 +113,73 @@ Permet de configurer directement Apache (serveur HTTP)
 .htaccess : On va pouvoir ajouter des configurations à Apache sur notre site courant.
 
 - URL rewriting :
-    - Permet de réécrire un lien, ex : http://localhost/PHP_MVC/contact -> http://localhost/PHP_MVC/index.php?page=contact
+    - Permet de réécrire un lien, ex : http://localhost/PHP_MVC/Structure/contact -> http://localhost/PHP_MVC/Structure/index.php?page=contact
 
 
 Utiliser la structure : Créer un blog
 ============
+
+### BDD
+Création d'un fichier SQL temporaire (table.sql) pour créer la BDD dans PHPMyAdmin
+
+### Création de classes
+On crée les classes Authors, Categories et Articles.
+
+Dans chaque classe on va appeler "global $db" afin d'aller chercher $db déclarée dans db.php et de pouvoir l'utiliser dans la classse appelante.
+
+Création de 2 fonctions dans chaque classe :
+- Le constructeur qui prend en paramètre l'id de l'objet
+- Une fonction static retournant la liste de tous les objets présents en BDD.
+
+Inclusion des classes
+````PHP
+// index.php
+
+// ...
+include_once '_classes/Articles.php';
+include_once '_classes/Authors.php';
+include_once '_classes/Categories.php';
+
+// ...
+````
+
+### Utilisation d'un thème Bootstrap
+Thème utilisé : https://getbootstrap.com/docs/4.4/examples/blog/
+- On copie/colle tout le contenu de la page
+- On récupère tout ce qui se trouve dans le Bootstrap core CSS (.min.css) pour le mettre dans un fichier boootstrap.css
+- Idem pour le thème principal blog.css à placer dans le style.css
+- Couper/coller : header et footer -> .php
+- Supprimer tout le head
+- Inclusion :
+````html
+<!-- head.php -->
+<!-- CSS Styles -->
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<link rel="stylesheet" href="assets\styles\css\bootstrap.css" />
+<link rel="stylesheet" href="assets\styles\css\styles.css" />
+````
+
+## Afficher les articles et catégories
+````PHP
+// controllers/home_controllers.php
+include_once '_classes/Articles';
+$allArticles = Articles::getAllArticles();
+````
+
+
+Tips
+========
+Pour debuger et vérifier les variables
+````PHP
+// index.php
+// Création d'un article avec un id (constructeur)
+$var = new Articles(1);
+debug($var); // ou var_dump($var)
+exit;
+````
+````PHP
+// Récupération de tous les auteurs (fonction static)
+$var = Authors::getAllAuthors();
+debug($var);
+exit;
+````
