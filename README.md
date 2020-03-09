@@ -70,7 +70,7 @@ Dans la barre de navigation header.php on indique toujours des chemins ramenant 
 - Pour home : index.php?page=home
 - Pour contact : index.php?page=home
 
-A changer plus tard lors de la configuration du .htaccess [.htaccess](#.htaccess)
+A changer plus tard lors de la configuration du [.htaccess](#user-content-htaccess)
 
 ### Pour stocker des images spécifiques
 Créer des dossiers en plus : icones, users (images de profil), brand
