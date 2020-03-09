@@ -159,17 +159,57 @@ Thème utilisé : https://getbootstrap.com/docs/4.4/examples/blog/
 <link rel="stylesheet" href="assets\styles\css\styles.css" />
 ````
 
-## Afficher les articles et catégories
+### Afficher les articles et catégories
 ````PHP
 // controllers/home_controllers.php
-include_once '_classes/Articles';
+include_once '_classes/Articles.php';
+include_once '_classes/Categories.php';
+
 $allArticles = Articles::getAllArticles();
+$allCategories = Categories::getAllCategories();
+$lastArticle = Articles::getLastArticle();
+$lastArticleLeft = Articles::getLastArticle(5);
+$lastArticleRight = Articles::getLastArticle(3);
 ````
+
+
+````PHP
+// views/home_view.php
+// ...
+// Affichage du dernier article posté en BDD en utilisant la variable $lastArticle du controller
+<?php foreach ($allCategories as $index => $category) : ?>
+    <a class="p-2 text-muted" href="#"><?= $category['name'] ?></a>
+<?php endforeach ?>
+// ...
+// Affichage du dernier article posté de 2 catégories différentes en BDD en utilisant la variable $lastArticle du controller
+// ...
+// Affichage de toutes les catégories présentes en BDD en utilisant la variable $allCategories du controller
+<?php foreach ($allCategories as $index => $category) : ?>
+                    <a class="p-2 text-muted" href="#"><?= $category['name'] ?></a>
+<?php endforeach ?>
+// ...
+
+// Affichage de tous les articles présents en BDD en utilisant la variable $allArticles du controller
+<?php
+foreach ($allArticles as $index => $article) : ?>
+<div class="blog-post">
+    <h2 class="blog-post-title"><?= $article['title'] ?></h2>
+    <p class="blog-post-meta"><?= date_format(date_create($article['date']),"d/m/Y H:i") ?> par <a href="#"><?= $article['firstname'] .' '. strtoupper($article['lastname']) ?></a></p>
+    <p><?= $article['content'] ?></p>
+</div><!-- /.blog-post -->
+<?php endforeach ?>
+````
+### Page de contact
+Création d'une page de contact :
+- contact_view.php
+- contact_controller.php
+- contact_model.php
+
 
 
 Tips
 ========
-Pour debuger et vérifier les variables
+### Pour debuger et vérifier les variables
 ````PHP
 // index.php
 // Création d'un article avec un id (constructeur)
