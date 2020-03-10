@@ -10,6 +10,7 @@
 
 <body>
     <div class="container">
+        <h1> <?= $lang->home->var1 ?></h1>
 
 
         <div class="nav-scroller py-1 mb-2">

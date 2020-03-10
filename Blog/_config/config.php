@@ -51,4 +51,5 @@ define("DATABASE_NAME", "test");
 define("DATABASE_USER", "root");
 define("DATABASE_PASSWORD", "");
 
-
+// Language
+define("DEFAULT_LANGUAGE", "fr");

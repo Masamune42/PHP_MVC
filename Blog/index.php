@@ -15,11 +15,16 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = 'home';
 }
 
+$_SESSION['lang'] = getUserLanguage();
+
 // Array contenant toutes les pages
 $allPages = scandir('controllers/');
 
 // Vérification de l'existence de la page
 if (in_array($page . '_controller.php', $allPages)) {
+
+    $lang = getPageLanguage($_SESSION['lang'], ['header', $page, 'footer']);
+
     // Inclusion de la page
     include_once 'models/' . $page . '_model.php';
     include_once 'controllers/' . $page . '_controller.php';

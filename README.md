@@ -296,10 +296,93 @@ On crée un fichier compilater.bat pour lancer la commande facilement
     - Eviter trop d'imbrications de blocs (3 max)
 
 ## Autoloader de classes
-### Principe
+### Principe et utilisation
 Inclure automatiquement des classes. Pas besoin de faire un require ou include, on va juste préciser le nom de la classe dans n'importe quelle ligne.
 
-On n'est plus obligé d'inclure les classes dans model.php
+On n'est plus obligé d'inclure les classes dans model.php. La partie model devient donc moins utile, elle ne servira que pour des classes "spéciales" utiles pour certaines pages (ex : classe Mail pour les mail dans une page contact).
+
+## Ajout d'un système multi-langages
+### Principe
+Suivant ce que la personne indique sur le lien, ex : google.com/fr, on va avoir différents types de langues dans des fichiers compris dans un dossier.
+
+### Utilisation
+Création d'un dossier "_langue" dans le projet.
+On y place 2 dossiers :
+- en
+- fr
+
+Avec un fichier home.json, header.json et footer.json dans chaque dossier.
+````json
+// _langue/fr/home.json
+{
+    "home": "Accueil",
+    "var1": "A propos"
+}
+````
+````json
+// _langue/en/home.json
+{
+    "home": "Accueil",
+    "var1": "About"
+}
+````
+
+Création des fonctions
+````php
+// _functions/functions.php
+// ...
+function getUserLanguage()
+{
+    if (isset($_GET['lang']) && !empty($_GET['lang'])) {
+        $lang = str_secur(strtolower($_GET['lang']));
+        $availableLanguages = ['en', 'fr'];
+        return (in_array($lang, $availableLanguages)) ? $lang : DEFAULT_LANGUAGE;
+    } else {
+        return (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) ? $_SESSION['lang'] : DEFAULT_LANGUAGE;
+    }
+}
+// ...
+function getPageLanguage($lang, $pages)
+{
+    $dataPage = [];
+    foreach ($pages as $p) {
+        $jsonString = file_get_contents('_langue/' . $lang . '/' . $p . '.json');
+        $json = json_decode($jsonString);
+        $dataPage[$p] = $json;
+    }
+    return (object) $dataPage;
+}
+````
+
+Utilisation dans les pages
+
+Création de la constante de langue
+````php
+// _config/config.php
+// ...
+// Language
+define("DEFAULT_LANGUAGE", "fr");
+````
+
+On récupère la langue et on l'utilise après dans les pages dans un tableau
+````php
+// index.php
+// ...
+$_SESSION['lang'] = getUserLanguage();
+// ...
+$lang = getPageLanguage($_SESSION['lang'], ['header', $page, 'footer']);
+// ...
+````
+
+Utilisation dans la page
+````php
+// views/home_view.php
+// ...
+// Traduction auto suivant les données dans le json de la langue
+<h1> <?= $lang->home->var1 ?></h1>
+// ...
+````
+
 
 Tips
 ========
