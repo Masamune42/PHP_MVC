@@ -322,7 +322,7 @@ Avec un fichier home.json, header.json et footer.json dans chaque dossier.
 ````json
 // _langue/en/home.json
 {
-    "home": "Accueil",
+    "home": "Home",
     "var1": "About"
 }
 ````
@@ -382,6 +382,27 @@ Utilisation dans la page
 <h1> <?= $lang->home->var1 ?></h1>
 // ...
 ````
+
+## Simplification de requêtes SQL
+### Principe et utilsation
+Utilisation d'une classe DB afin de simplifier l'utilisation de la BDD : https://github.com/AxelPariss/DB/blob/master/src/DB.php
+- Copier/Coller le code php dans une classe _classe/Db_classe.php
+- On remplace l'ancien appel de la BDD avec l'instanciation de la classe DB
+````php
+$db = new DB(DATABASE_HOST,DATABASE_NAME,DATABASE_USER,DATABASE_PASSWORD);
+// FETCH_ASSOC -> ne renvoie plus d'éléments en double dans le tableau des éléments retournés
+$db->setFetchMode(PDO::FETCH_ASSOC);
+````
+- Utilisation dans controllers/test_controller.php
+
+### Infos
+Appel de la classe commenté dans _config/config.php. Utilisation à revoir.
+
+## Automatisationdes tâches (cron jobs)
+### Principe
+Utilisation périodique d'un script pour réaliser une action. On crée un fichier _scripts/get_all_users.php. Que l'on peut appeler.
+
+A revoir pour des utilisationsde base.
 
 
 Tips
