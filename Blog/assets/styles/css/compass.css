@@ -1,0 +1,38 @@
+/*
+Error: Invalid CSS after "@import "config"": expected selector or at-rule, was "$mainColor : rg..."
+        on line 3 of C:/wamp64/www/PHP_MVC/Blog/assets/styles/sass/compass.scss
+
+1: @import "config"
+2: 
+3: $mainColor : rgb(17, 80, 31);
+4: $heightTitle : 200px;
+5: 
+6: // Crée des propriétés en l'appelant d'un élément
+7: @mixin inlineBlock($align:bottom) {
+8:     display: inline-block;
+
+Backtrace:
+C:/wamp64/www/PHP_MVC/Blog/assets/styles/sass/compass.scss:3
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/scss/parser.rb:1207:in `expected'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/scss/parser.rb:1137:in `expected'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/scss/parser.rb:42:in `parse'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/engine.rb:409:in `_to_tree'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/engine.rb:284:in `render'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:494:in `update_stylesheet'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:331:in `block in watch'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"@import \"config\"\": expected selector or at-rule, was \"$mainColor : rg...\"\A         on line 3 of C:/wamp64/www/PHP_MVC/Blog/assets/styles/sass/compass.scss\A \A 1: @import \"config\"\A 2: \A 3: $mainColor : rgb(17, 80, 31);\A 4: $heightTitle : 200px;\A 5: \A 6: // Crée des propriétés en l'appelant d'un élément\A 7: @mixin inlineBlock($align:bottom) {\A 8:     display: inline-block;"; }

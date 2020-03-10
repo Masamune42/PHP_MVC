@@ -126,6 +126,26 @@ Création d'un fichier SQL temporaire (table.sql) pour créer la BDD dans PHPMyA
 On crée les classes Authors, Categories et Articles.
 
 Dans chaque classe on va appeler "global $db" afin d'aller chercher $db déclarée dans db.php et de pouvoir l'utiliser dans la classse appelante.
+````PHP
+// _classe/Authors.php
+// ...
+function __construct($id)
+    {
+        global $db;
+
+        $id = str_secur($id);
+
+        $reqAuthor = $db->prepare('SELECT * FROM authors WHERE id=?');
+        $reqAuthor->execute([$id]);
+
+        $data = $reqAuthor->fetch();
+
+        $this->id = $id;
+        $this->firstname = $data['firstname'];
+        $this->lastname = $data['lastname'];
+    }
+// ...
+````
 
 Création de 2 fonctions dans chaque classe :
 - Le constructeur qui prend en paramètre l'id de l'objet
@@ -201,11 +221,85 @@ foreach ($allArticles as $index => $article) : ?>
 ````
 ### Page de contact
 Création d'une page de contact :
-- contact_view.php
-- contact_controller.php
-- contact_model.php
+- On crée les fichiers :
+    - contact_view.php qui va contenir un formulaire
+    - contact_controller.php qui va traitement ce que l'on fait du formulaire (détection de la méthode post + des champs remplis)
+    - contact_model.php
+- Envoi de mail par la suite (A configurer dans WAMP)
 
 
+Notions avancées
+============
+## Compass
+### Présentation de Compass
+Framework CSS qui va écrire en SASS : langage extrêmement proche du CSS, permet d'écrire du CSS plus rapidement.
+
+### Installation
+- Aller sur -> http://compass-style.org/install/
+- Installer Ruby et mettre à jour
+````console
+$ gem update --system
+````
+- Installer Compass
+````console
+$ gem install compass
+````
+- Créer les fichiers
+````console
+$ cd C:\wamp64\www\PHP_MVC\Blog\assets\styles
+$ compass create
+````
+
+### Configuration
+Fichiers à disposition :
+- config.rb : Permet de configurer le Framework
+````ruby
+# ...
+
+# assets/styles/config.rb
+# Configuration des chemins vers les dossiers
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "../images"
+javascripts_dir = "../js"
+
+# ...
+
+# Permet de dire au Framework comment on veut que le CSS soit écrit : SASS --Compass--> CSS
+# :expanded -> style assez large avec sauts de ligne et tabulations
+# :compressed -> style avec aucun saut de ligne ou tabulation = une seule ligne
+# dev -> :expanded, prod -> :compressed
+# output_style = :expanded or :nested or :compact or :compressed
+
+# ...
+
+# Détermine si on laisse les commentaires quand on transforme en CSS
+line_comments = false
+````
+
+- Création des fichiers SASS transformés en CSS
+````console
+<!-- Au moment où Compass détecte un changement dans le dossier SASS, les transforme en CSS -->
+$ compass watch
+````
+On crée un fichier compilater.bat pour lancer la commande facilement
+
+### Utilisation
+- Création d'un fichier assets/styles/sass/compass.scss -> Compass crée un fichier css/compass.css
+
+- Avantages :
+    - Création de variables
+    - Création de @mixin (fonctions)
+    - Imbrication des blocs CSS
+    - Importation d'autres fichiers CSS possible
+- Inconvénient :
+    - Eviter trop d'imbrications de blocs (3 max)
+
+## Autoloader de classes
+### Principe
+Inclure automatiquement des classes. Pas besoin de faire un require ou include, on va juste préciser le nom de la classe dans n'importe quelle ligne.
+
+On n'est plus obligé d'inclure les classes dans model.php
 
 Tips
 ========

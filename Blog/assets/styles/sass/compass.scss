@@ -1,0 +1,37 @@
+@import "config"
+
+$mainColor : rgb(17, 80, 31);
+$heightTitle : 200px;
+
+// Crée des propriétés en l'appelant d'un élément
+@mixin inlineBlock($align:bottom) {
+    display: inline-block;
+    vertical-align: $align;
+}
+
+@mixin transforme($properties) {
+    // Appplicables que dans certains navigateurs
+    -webkit-transform: $properties;
+    -ms-transform: $properties;
+    transform: $properties;
+}
+
+h1 {
+    height: $heightTitle;
+    line-height: $heightTitle;
+    font-size: 45px;
+    color: $mainColor;
+    @include inlineBlock(top);
+}
+
+.text {
+    font-size: 20px;
+
+    &.mainColor {
+        color: $mainColor;
+    }
+
+    a {
+        font-size: 10px;
+    }
+}
