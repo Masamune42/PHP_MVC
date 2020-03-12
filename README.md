@@ -301,6 +301,9 @@ Inclure automatiquement des classes. Pas besoin de faire un require ou include, 
 
 On n'est plus obligé d'inclure les classes dans model.php. La partie model devient donc moins utile, elle ne servira que pour des classes "spéciales" utiles pour certaines pages (ex : classe Mail pour les mail dans une page contact).
 
+### Lien utile
+https://www.grafikart.fr/tutoriels/autoload-561
+
 ## Ajout d'un système multi-langages
 ### Principe
 Suivant ce que la personne indique sur le lien, ex : google.com/fr, on va avoir différents types de langues dans des fichiers compris dans un dossier.
