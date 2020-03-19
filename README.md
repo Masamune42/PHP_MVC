@@ -301,6 +301,21 @@ Inclure automatiquement des classes. Pas besoin de faire un require ou include, 
 
 On n'est plus obligé d'inclure les classes dans model.php. La partie model devient donc moins utile, elle ne servira que pour des classes "spéciales" utiles pour certaines pages (ex : classe Mail pour les mail dans une page contact).
 
+````php
+// Blog/models/home_model.php
+// A supprimer
+include_once '_classes/Members.php';
+include_once '_classes/Articles.php';
+````
+A remplacer par :
+````php
+// Blog/index.php
+// Chargement auto de chaque classe nécessaire
+include_once '_classes/Autloader.php';
+
+Autoloader::register();
+````
+
 ### Lien utile
 https://www.grafikart.fr/tutoriels/autoload-561
 
